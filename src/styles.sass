@@ -1,7 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
-$font-stack: Helvetica, sans-serif
-$primary-color: #333333
+:root
+  --font-stack: Helvetica, sans-serif
+  --primary-color: #333333
+  --main-width: 760px
+  --header-height: 60px
+  --footer-height: 60px
+  --nav-width: 1024px
+  --gap: 24px
 
+*
+  margin: 0
+  padding: 0
+  
 body
-  font: 100% $font-stack
-  color: $primary-color
+  color: var(--primary-color)
+  font-family: var(--font-stack)
+  font-size: 18px
+
+a
+  color: var(--primary-color)
+  text-decoration: none
+
+li
+  display: list-item
+  text-align: -webkit-match-parent

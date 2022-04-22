@@ -1,0 +1,25 @@
+.header
+
+.nav
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    max-width: calc(var(--nav-width) + var(--gap) * 2)
+    margin-left: auto
+    margin-right: auto
+
+.nav a
+    line-height: var(--header-height)
+
+.logo, .menu
+    margin-left: var(--gap)
+    margin-right: var(--gap)
+
+.menu
+    display: flex
+    list-style: none
+    word-break: keep-all
+    overflow-x: auto
+
+.menu li + li
+    margin-left: 15px
