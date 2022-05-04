@@ -1,4 +1,9 @@
 <div class="word">
-    <p>{{ word.korean }}</p>
-    <p>--> {{ word.english }}</p>
+    <div>[{{ word.korean }}]</div>
+    <div>
+        <ul>
+            <li><b>{{ word.english }}</b></li>
+            <li>{{ word.discription }}</li>
+        </ul>
+    </div>
 </div>
