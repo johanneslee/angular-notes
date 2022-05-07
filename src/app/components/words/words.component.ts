@@ -14,5 +14,4 @@ export class WordsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
