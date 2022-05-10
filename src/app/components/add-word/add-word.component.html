@@ -1,17 +1,24 @@
-<div class="button" (click)="onAddWord()">+</div>
-<div class="container">
-  <div class="content">
-    <ul>
-      <li><b>Korean</b></li>
-      <li>This is for an Korean word</li>
-    </ul>
-    <ul>
-      <li><b>English</b></li>
-      <li>This is for an English word</li>
-    </ul>
-    <ul>
-      <li><b>Description</b></li>
-      <li>This is for an English description</li>
-    </ul>
+<div class="plus">+</div>
+<div class="popup_container">
+  <div class="popup_content">
+    <div class="box center">
+      <ul>
+        <li><h3>Korean</h3></li>
+        <li><input type="text" name="korean" placeholder="This is for an Korean word" /></li>
+      </ul>
+      <ul>
+        <li><h3>English</h3></li>
+        <li><input type="text" name="english" placeholder="This is for an English word" /></li>
+      </ul>
+      <ul>
+        <li><h3>Description</h3></li>
+        <li><input type="text" name="description" placeholder="This is for an English description" /></li>
+      </ul>
+    </div>
+    <div class="box center">
+      <a class="button">Save</a>
+      <a class="button">Close</a>
+    </div>
   </div>
 </div>
+<div class="dimmed"></div>
