@@ -6,15 +6,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-word.component.sass']
 })
 export class AddWordComponent implements OnInit {
-  addWord: boolean = false;
+  displayBox: boolean = false;
+
+  korean?: string;
+  english?: string;
+  description?: string;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onAddWord() {
-    this.addWord = !this.addWord;
-    console.log(this.addWord);
+  toggleAddWord() {
+    this.displayBox = !this.displayBox;
+  }
+
+  onSubmit() {
+    if(!this.korean) {
+      alert('Please enter a Korean!');
+    }
+
+    if(!this.english) {
+      alert('Please enter a English!');
+    }
+
+    if(!this.description) {
+      alert('Please enter a Description!');
+    }
+
+    const Word = {
+      korean: this.korean,
+      english: this.english,
+      description: this.description
+    }
+
+    // @todo - emit event
+    // 1:31:59
   }
 }

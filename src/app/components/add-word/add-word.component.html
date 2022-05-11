@@ -1,24 +1,26 @@
-<div class="plus">+</div>
-<div class="popup_container">
+<div class="plus" (click)="toggleAddWord()">+</div>
+<div class="popup_container" *ngIf="displayBox">
   <div class="popup_content">
     <div class="box center">
-      <ul>
-        <li><h3>Korean</h3></li>
-        <li><input type="text" name="korean" placeholder="This is for an Korean word" /></li>
-      </ul>
-      <ul>
-        <li><h3>English</h3></li>
-        <li><input type="text" name="english" placeholder="This is for an English word" /></li>
-      </ul>
-      <ul>
-        <li><h3>Description</h3></li>
-        <li><input type="text" name="description" placeholder="This is for an English description" /></li>
-      </ul>
+      <form>
+        <ul>
+          <li><h3>Korean</h3></li>
+          <li><input type="text" name="korean" [(ngModel)]="korean" placeholder="This is for an Korean word" /></li>
+        </ul>
+        <ul>
+          <li><h3>English</h3></li>
+          <li><input type="text" name="english" [(ngModel)]="english" placeholder="This is for an English word" /></li>
+        </ul>
+        <ul>
+          <li><h3>Description</h3></li>
+          <li><input type="text" name="description" [(ngModel)]="description" placeholder="This is for an English description" /></li>
+        </ul>
+      </form>
     </div>
     <div class="box center">
-      <a class="button">Save</a>
-      <a class="button">Close</a>
+      <a class="button" (click)="onSubmit()">Save</a>
+      <a class="button" (click)="toggleAddWord()">Close</a>
     </div>
   </div>
 </div>
-<div class="dimmed"></div>
+<div class="dimmed" *ngIf="displayBox"></div>
