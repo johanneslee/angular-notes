@@ -1,5 +1,4 @@
-<div class="plus" (click)="toggleAddWord()">+</div>
-<div class="popup_container" *ngIf="displayBox">
+<div class="popup_container" *ngIf="toggleBox">
   <div class="popup_content">
     <div class="box center">
       <form>
@@ -19,8 +18,8 @@
     </div>
     <div class="box center">
       <a class="button" (click)="onSubmit()">Save</a>
-      <a class="button" (click)="toggleAddWord()">Close</a>
+      <a class="button" (click)="onClick()">Close</a>
     </div>
   </div>
 </div>
-<div class="dimmed" *ngIf="displayBox"></div>
+<div class="dimmed" *ngIf="toggleBox"></div>

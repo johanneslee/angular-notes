@@ -9,9 +9,18 @@ import { WORDS } from '../../mock-words';
 })
 export class WordsComponent implements OnInit {
   words: Word[] = WORDS;
+  toggleBox: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onToggle(toggleBox: boolean) {
+    this.toggleBox = toggleBox;
+  }
+
+  addWord(word: Word) {
+    this.words.push(word);
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Word } from '../../Word';
 
 @Component({
   selector: 'app-add-word',
@@ -6,41 +7,50 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-word.component.sass']
 })
 export class AddWordComponent implements OnInit {
-  displayBox: boolean = false;
+  @Input() toggleBox: boolean = false;
+  @Output() onClose: EventEmitter<void> = new EventEmitter();
+  @Output() onAddWord: EventEmitter<Word> = new EventEmitter();
 
-  korean?: string;
-  english?: string;
-  description?: string;
+  korean!: string;
+  english!: string;
+  description!: string;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  toggleAddWord() {
-    this.displayBox = !this.displayBox;
+  onClick() {
+    this.toggleBox = false;
+    this.onClose.emit();
   }
 
   onSubmit() {
     if(!this.korean) {
       alert('Please enter a Korean!');
+      return;
     }
-
     if(!this.english) {
       alert('Please enter a English!');
+      return;
     }
-
     if(!this.description) {
       alert('Please enter a Description!');
+      return;
     }
 
-    const Word = {
+    const newWord = {
       korean: this.korean,
       english: this.english,
       description: this.description
-    }
+    };
 
-    // @todo - emit event
-    // 1:31:59
+    this.onAddWord.emit(newWord);
+
+    this.korean = '';
+    this.english = '';
+    this.description = '';
+
+    this.onClick();
   }
 }
