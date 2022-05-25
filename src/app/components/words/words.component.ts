@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WordService } from '../../services/word.service';
 import { Word } from '../../Word';
-import { WORDS } from '../../mock-words';
 
 @Component({
   selector: 'app-words',
@@ -8,12 +8,13 @@ import { WORDS } from '../../mock-words';
   styleUrls: ['./words.component.sass']
 })
 export class WordsComponent implements OnInit {
-  words: Word[] = WORDS;
+  words: Word[] = [];
   toggleBox: boolean = false;
 
-  constructor() { }
+  constructor(private wordService: WordService) { }
 
   ngOnInit(): void {
+    this.wordService.getWords().subscribe((words) => (this.words = words));
   }
 
   onToggle(toggleBox: boolean) {
