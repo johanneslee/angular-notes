@@ -23,5 +23,6 @@ export class WordsComponent implements OnInit {
 
   addWord(word: Word) {
     this.words.push(word);
+    //this.wordService.addWord(word).subscribe((words) => (this.words = words));
   }
 }
