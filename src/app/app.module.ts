@@ -13,8 +13,6 @@ import { AddWordComponent } from './components/add-word/add-word.component';
 import { WordComponent } from './components/word/word.component';
 import { HomeComponent } from './components/home/home.component';
 
-// https://developer.oxforddictionaries.com/
-
 @NgModule({
   declarations: [
     AppComponent,

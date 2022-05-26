@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Word } from '../Word';
-import { WORDS } from '../mock-words';
+import { API_CONFIG } from '../config';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WordService {
-  private http_host: String = 'https://jhlee-node-notes.herokuapp.com';
-
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getWords(): Observable<Word[]> {
-    const words = of(WORDS);
+    const url = API_CONFIG.domain + '/words';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json; charset=utf-8',
+        'Access-Control-Allow-Origin': '*'
+      })
+    };
+    const words = this.http.get<Word[]>(url, httpOptions);
     return words;
   }
 
