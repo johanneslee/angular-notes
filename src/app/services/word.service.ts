@@ -11,18 +11,17 @@ export class WordService {
   constructor(private http: HttpClient) { }
 
   getWords(): Observable<Word[]> {
-    const url = API_CONFIG.domain + '/words';
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8',
-        'Access-Control-Allow-Origin': '*'
-      })
-    };
-    const words = this.http.get<Word[]>(url, httpOptions);
-    return words;
+    const url = API_CONFIG.domain + `/words`;
+    return this.http.get<Word[]>(url);
   }
 
-  addWord(word: Word) {
-    return null;
+  getWord(seq: number): Observable<Word> {
+    const url = API_CONFIG.domain + `/words/${seq}`;
+    return this.http.get<Word>(url);
+  }
+
+  postWord(word: Word): Observable<Word> {
+    const url = API_CONFIG.domain + `/words`;
+    return this.http.post<Word>(url, word);
   }
 }

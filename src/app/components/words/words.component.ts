@@ -14,7 +14,7 @@ export class WordsComponent implements OnInit {
   constructor(private wordService: WordService) { }
 
   ngOnInit(): void {
-    this.wordService.getWords().subscribe((words) => (this.words = words));
+    this.wordService.getWords().subscribe((words) => this.words = words);
   }
 
   onToggle(toggleBox: boolean) {
@@ -22,7 +22,6 @@ export class WordsComponent implements OnInit {
   }
 
   addWord(word: Word) {
-    this.words.push(word);
-    //this.wordService.addWord(word).subscribe((words) => (this.words = words));
+    this.wordService.postWord(word).subscribe();
   }
 }

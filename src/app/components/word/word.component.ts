@@ -7,11 +7,10 @@ import { Word } from '../../Word';
   styleUrls: ['./word.component.sass']
 })
 export class WordComponent implements OnInit {
-  @Input() word!: Word
+  @Input() word!: Word;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
