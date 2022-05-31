@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { WordService } from '../../services/word.service';
 import { Word } from '../../Word';
 
 @Component({
@@ -7,51 +8,48 @@ import { Word } from '../../Word';
   styleUrls: ['./add-word.component.sass']
 })
 export class AddWordComponent implements OnInit {
-  @Input() toggleBox: boolean = false;
   @Output() onClose: EventEmitter<void> = new EventEmitter();
   @Output() onAddWord: EventEmitter<Word> = new EventEmitter();
+  @Input() korean: string = '';
+  @Input() english: string = '';
+  @Input() description: string = '';
 
-  KOREAN!: string;
-  ENGLISH!: string;
-  DESCRIPTION!: string;
-
-  constructor() { }
+  constructor(private wordService: WordService) { }
 
   ngOnInit(): void {
   }
 
-  onClick() {
-    this.toggleBox = false;
+  closeModal() {
     this.onClose.emit();
   }
 
-  onSubmit() {
-    if(!this.KOREAN) {
+  setWord() {
+    if(!this.korean) {
       alert('Please enter a Korean!');
       return;
     }
-    if(!this.ENGLISH) {
+    if(!this.english) {
       alert('Please enter a English!');
       return;
     }
-    if(!this.DESCRIPTION) {
+    if(!this.description) {
       alert('Please enter a Description!');
       return;
     }
 
     const newWord = {
       SEQ: 0,
-      KOREAN: this.KOREAN,
-      ENGLISH: this.ENGLISH,
-      DESCRIPTION: this.DESCRIPTION
+      KOREAN: this.korean,
+      ENGLISH: this.english,
+      DESCRIPTION: this.description
     };
+    
+    this.wordService.postWord(newWord).subscribe();
 
-    this.onAddWord.emit(newWord);
+    this.korean = '';
+    this.english = '';
+    this.description = '';
 
-    this.KOREAN = '';
-    this.ENGLISH = '';
-    this.DESCRIPTION = '';
-
-    this.onClick();
+    this.closeModal();
   }
 }

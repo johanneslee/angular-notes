@@ -9,7 +9,7 @@ import { Word } from '../../Word';
 })
 export class WordsComponent implements OnInit {
   words: Word[] = [];
-  toggleBox: boolean = false;
+  isAddEnabled: boolean = false;
 
   constructor(private wordService: WordService) { }
 
@@ -17,11 +17,7 @@ export class WordsComponent implements OnInit {
     this.wordService.getWords().subscribe((words) => this.words = words);
   }
 
-  onToggle(toggleBox: boolean) {
-    this.toggleBox = toggleBox;
-  }
-
-  addWord(word: Word) {
-    this.wordService.postWord(word).subscribe();
+  onToggle(isAddEnabled: boolean) {
+    this.isAddEnabled = isAddEnabled;
   }
 }

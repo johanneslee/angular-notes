@@ -1,7 +1,12 @@
-<app-word *ngFor="let word of words" [word]="word"></app-word>
-<div class="plus" (click)="onToggle(true)">+</div>
+<app-word
+    *ngFor="let word of words"
+    [word]="word"
+></app-word>
+<div
+    class="plus"
+    (click)="onToggle(true)"
+>+</div>
 <app-add-word
-    [toggleBox]="toggleBox"
+    *ngIf="isAddEnabled"
     (onClose)="onToggle(false)"
-    (onAddWord)="addWord($event)"
 ></app-add-word>
