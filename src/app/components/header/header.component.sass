@@ -1,33 +1,21 @@
+a
+  color: #f9f9f9
+    
 .header
-  display: fixed
+  display: flex
+  justify-content: space-between
+  height: 48px
+  line-height: 48px
   background-color: #1f2029
 
-.header a
-  color: #f9f9f9
-
-.logo a
+.logo
+  margin: 0 24px
   font-weight: bold
-
-.nav
-  display: flex
-  flex-wrap: wrap
-  justify-content: space-between
-  max-width: calc(var(--nav-width) - var(--gap) * 2)
-  margin-left: auto
-  margin-right: auto
-
-.nav a
-  line-height: var(--header-height)
-
-.logo, .menu
-  margin-left: var(--gap)
-  margin-right: var(--gap)
 
 .menu
   display: flex
+  margin: 0 24px
   list-style: none
-  word-break: keep-all
-  overflow-x: auto
-
-.menu li + li
-  margin-left: 15px
+  
+  li + li
+    margin-left: 16px

@@ -1,12 +1,14 @@
-<app-word
-    *ngFor="let word of words"
-    [word]="word"
-></app-word>
-<div
-    class="plus"
-    (click)="onToggle(true)"
->+</div>
-<app-add-word
-    *ngIf="isAddEnabled"
-    (onClose)="onToggle(false)"
-></app-add-word>
+<div class="words">
+  <app-add-word
+      *ngIf="isAddEnabled"
+      (onClose)="onToggle(false)"
+  ></app-add-word>
+  <app-word
+      *ngFor="let word of words"
+      [word]="word"
+  ></app-word>
+  <div
+      class="plus"
+      (click)="onToggle(true)"
+  >+</div>
+</div>
