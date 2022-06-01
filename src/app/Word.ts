@@ -1,6 +1,6 @@
 export interface Word {
-  SEQ: number;
-  KOREAN: string;
-  ENGLISH: string;
-  DESCRIPTION: string;
+  seq: number;
+  korean: string;
+  english: string;
+  description: string;
 };

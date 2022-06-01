@@ -11,9 +11,9 @@ export class AddWordComponent implements OnInit {
   @Output() onClose: EventEmitter<void> = new EventEmitter();
   @Output() onAddWord: EventEmitter<Word> = new EventEmitter();
 
-  KOREAN!: string;
-  ENGLISH!: string;
-  DESCRIPTION!: string;
+  korean!: string;
+  english!: string;
+  description!: string;
 
   constructor() { }
 
@@ -26,31 +26,32 @@ export class AddWordComponent implements OnInit {
   }
 
   onSubmit() {
-    if(!this.KOREAN) {
-      alert('Please enter a Korean!');
+    if(!this.korean) {
+      alert('Please enter a korean!');
       return;
     }
-    if(!this.ENGLISH) {
-      alert('Please enter a English!');
+    if(!this.english) {
+      alert('Please enter a english!');
       return;
     }
-    if(!this.DESCRIPTION) {
-      alert('Please enter a Description!');
+    if(!this.description) {
+      alert('Please enter a description!');
       return;
     }
 
     const newWord = {
-      SEQ: 0,
-      KOREAN: this.KOREAN,
-      ENGLISH: this.ENGLISH,
-      DESCRIPTION: this.DESCRIPTION
+      seq: 0,
+      korean: this.korean,
+      english: this.english,
+      description: this.description
     };
 
     this.onAddWord.emit(newWord);
+    return;
 
-    this.KOREAN = '';
-    this.ENGLISH = '';
-    this.DESCRIPTION = '';
+    this.korean = '';
+    this.english = '';
+    this.description = '';
 
     this.onClick();
   }
