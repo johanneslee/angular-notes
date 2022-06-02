@@ -13,6 +13,11 @@ import { AddWordComponent } from './components/add-word/add-word.component';
 import { WordComponent } from './components/word/word.component';
 import { HomeComponent } from './components/home/home.component';
 
+const appRoutes = [
+  {path: '', component: HomeComponent},
+  {path: 'words', component: WordsComponent}
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,10 +31,7 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      {path: '', component: HomeComponent},
-      {path: 'words', component: WordsComponent}
-    ]),
+    RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpClientModule
   ],
