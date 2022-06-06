@@ -9,15 +9,19 @@ import { Word } from '../../Word';
 })
 export class WordsComponent implements OnInit {
   words: Word[] = [];
-  isAddEnabled: boolean = false;
+  initWords: boolean = false
+  addEnabled: boolean = false;
 
   constructor(private wordService: WordService) { }
 
   ngOnInit(): void {
-    this.wordService.getWords().subscribe((words) => this.words = words);
+    this.wordService.getWords().subscribe((words) => {
+      this.words = words;
+      this.initWords = true;
+    });
   }
 
-  onToggle(isAddEnabled: boolean) {
-    this.isAddEnabled = isAddEnabled;
+  onToggle(addEnabled: boolean) {
+    this.addEnabled = addEnabled;
   }
 }
