@@ -1,17 +1,26 @@
+@use "../../variables"
+
 .header
   display: -webkit-flex
   display: flex
   justify-content: space-between
-  padding: 16px 24px
+  margin: 0
+  padding: 0
+  width: 100%
+  height: 60px
+  line-height: 60px
+  z-index: variables.$zindex-fixed
   background-color: #1f2029
 
 .logo
+  padding: 0 24px
   font-weight: bold
   color: #f9f9f9
 
 .menu
   display: -webkit-flex
   display: flex
+  padding: 0 24px
   
   a
     color: #f9f9f9

@@ -1,54 +1,54 @@
-.box
+.row
   width: 100%
 
-.box + .box
-  padding-top: 1.5em
+.row + .row
+  padding-top: 24px
 
 .button
-  padding: calc(1.5em / 2) 1.5em
+  padding: 12px 24px
   line-height: 2em
   background-color: #1f2029
-  border-radius: calc(1.5em / 4)
-  box-shadow: calc(1.5em / 4) calc(1.5em / 4) calc(1.5em / 2) rgba(0, 0, 0, 10%)
+  border-radius: 6px
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 10%)
   font-weight: bold 
   color: #f9f9f9
   cursor: pointer
 
 .button + .button
-  margin-left: 1.5em
+  margin-left: 24px
 
 .dimmed
   position: fixed
-  top: 4em
-  left: calc(50vw - 50em / 2)
+  top: 50px
+  left: 0
   background-color: #1f2029
   opacity: 0.75
-  width: 50em
-  height: calc(100% - 4em - 3em)
+  width: 100%
+  height: calc(100% - 50px - 38px)
 
-.popup_container
+.add-word
   position: absolute
   display: -webkit-flex
   display: flex
   justify-content: center
   align-items: center
   z-index: 9999
-  top: 4em
-  left: calc(50vw - 50em / 2)
-  width: 50em
-  height: calc(100% - 4em - 3em)
+  top: 50px
+  left: calc(50vw - 480px / 2)
+  width: 480px
+  height: calc(100% - 50px - 38px)
 
-.popup_content
-  padding: 1.5em
-  width: calc(50em - 1.5em * 16)
+.content
+  padding: 24px
+  width: calc(480px - 24px  / 2)
   border-radius: 0.5em
   background-color: #f9f9f9
 
 ul + ul
-  padding-top: 1.5em
+  padding-top: 24px
 
 li + li
-  padding-top: calc(1.5em / 2)
+  padding-top: 12px
 
 input
   padding: 1em

@@ -1,8 +1,5 @@
-:root
-  --font-stack: Helvetica, sans-serif
-  --font-size: 1em
-  --primary-color: #333333
-
+@use "./app/variables"
+  
 html, body, p, ul, h1, h2, h3
   margin: 0
   padding: 0
@@ -11,12 +8,12 @@ html, body
   width: 100%
   height: 100%
   background: #f9f9f9
-  color: var(--primary-color)
-  font-family: var(--font-stack)
-  font-size: var(--font-size)
+  color: variables.$primary-color
+  font-family: variables.$font-stack
+  font-size: variables.$font-size
 
 a
-  color: var(--primary-color)
+  color: variables.$primary-color
   text-decoration: none
 
 li
