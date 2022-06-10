@@ -10,6 +10,7 @@
   >+</div>
   <app-add-word
     *ngIf="addEnabled"
+    (onAddWord)="postWord(word!)"
     (onClose)="onToggle(false)"
   ></app-add-word>
   <div

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { WordService } from '../../services/word.service';
 import { Word } from '../../Word';
 
@@ -8,20 +8,33 @@ import { Word } from '../../Word';
   styleUrls: ['./words.component.sass']
 })
 export class WordsComponent implements OnInit {
-  words: Word[] = [];
-  initWords: boolean = false
+  word?: Word;
+  words?: Word[];
+  initWords: boolean = false;
   addEnabled: boolean = false;
 
   constructor(private wordService: WordService) { }
 
   ngOnInit(): void {
+    this.getWords();
+  }
+
+  getWords(): void {
+    this.initWords = false;
     this.wordService.getWords().subscribe((words) => {
       this.words = words;
       this.initWords = true;
     });
   }
 
-  onToggle(addEnabled: boolean) {
+  postWord(word: Word): void {
+    console.log(word);
+    return;
+    this.wordService.postWord(word).subscribe();
+    this.getWords();
+  }
+
+  onToggle(addEnabled: boolean): void {
     this.addEnabled = addEnabled;
   }
 }

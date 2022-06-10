@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Word } from '../Word';
 import { API_CONFIG } from '../config';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +22,11 @@ export class WordService {
 
   postWord(word: Word): Observable<Word> {
     const url = API_CONFIG.domain + `/words`;
-    const headers = { 'content-type': 'application/json' };
-    const body = JSON.stringify(word);
-    return this.http.post<Word>(url, body, { 'headers': headers });
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post<Word>(url, word, httpOptions);
   }
 }

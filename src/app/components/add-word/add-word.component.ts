@@ -19,6 +19,12 @@ export class AddWordComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  initModal() {
+    this.korean = '';
+    this.english = '';
+    this.description = '';
+  }
+
   closeModal() {
     this.onClose.emit();
   }
@@ -37,19 +43,17 @@ export class AddWordComponent implements OnInit {
       return;
     }
 
-    const newWord = {
+    const word: Word = {
       seq: 0,
       korean: this.korean,
       english: this.english,
       description: this.description
     };
     
-    this.wordService.postWord(newWord).subscribe();
+    console.log(word);
+    this.onAddWord.emit(word);
 
-    this.korean = '';
-    this.english = '';
-    this.description = '';
-
+    this.initModal();
     this.closeModal();
   }
 }
