@@ -12,6 +12,7 @@ import { WordsComponent } from './components/words/words.component';
 import { AddWordComponent } from './components/add-word/add-word.component';
 import { WordComponent } from './components/word/word.component';
 import { HomeComponent } from './components/home/home.component';
+import { AddKoreanComponent } from './components/add-korean/add-korean.component';
 
 const appRoutes = [
   {path: '', component: HomeComponent},
@@ -27,7 +28,8 @@ const appRoutes = [
     HomeComponent,
     WordsComponent,
     WordComponent,
-    AddWordComponent
+    AddWordComponent,
+    AddKoreanComponent
   ],
   imports: [
     BrowserModule,

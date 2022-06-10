@@ -1,18 +1,25 @@
 <div class="words">
-  <app-word
-    *ngFor="let word of words"
-    [word]="word"
-  ></app-word>
   <div
-    class="plus"
-    *ngIf="initWords"
-    (click)="onToggle(true)"
-  >+</div>
-  <app-add-word
-    *ngIf="addEnabled"
-    (onAddWord)="postWord(word!)"
-    (onClose)="onToggle(false)"
-  ></app-add-word>
+    *ngIf="initWords">
+    <app-word
+      *ngFor="let word of words"
+      [word]="word"
+    ></app-word>
+    <div
+      class="plus"
+      (click)="onToggleKorean(true)"
+    >+</div>
+    <app-add-korean
+      *ngIf="addKoreanEnabled"
+      (onAddKorean)="postKorean($event)"
+      (onClose)="onToggleKorean(false)"
+    ></app-add-korean>
+    <app-add-word
+      *ngIf="addWordEnabled"
+      (onAddWord)="postWord($event)"
+      (onClose)="onToggleWord(false)"
+    ></app-add-word>
+  </div>
   <div
     class="loading"
     *ngIf="!initWords"

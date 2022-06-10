@@ -8,10 +8,10 @@ import { Word } from '../../Word';
   styleUrls: ['./words.component.sass']
 })
 export class WordsComponent implements OnInit {
-  word?: Word;
-  words?: Word[];
+  words: Word[] = [];
   initWords: boolean = false;
-  addEnabled: boolean = false;
+  addKoreanEnabled: boolean = false;
+  addWordEnabled: boolean = false;
 
   constructor(private wordService: WordService) { }
 
@@ -27,14 +27,20 @@ export class WordsComponent implements OnInit {
     });
   }
 
+  postKorean(korean: string): void {
+    this.wordService.postKorean(korean).subscribe((object) => object.english);
+  }
+
   postWord(word: Word): void {
-    console.log(word);
-    return;
     this.wordService.postWord(word).subscribe();
     this.getWords();
   }
 
-  onToggle(addEnabled: boolean): void {
-    this.addEnabled = addEnabled;
+  onToggleKorean(addKoreanEnabled: boolean): void {
+    this.addKoreanEnabled = addKoreanEnabled;
+  }
+
+  onToggleWord(addWordEnabled: boolean): void {
+    this.addWordEnabled = addWordEnabled;
   }
 }

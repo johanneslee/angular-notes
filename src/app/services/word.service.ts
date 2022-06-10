@@ -20,6 +20,11 @@ export class WordService {
     return this.http.get<Word>(url);
   }
 
+  postKorean(korean: string): Observable<any> {
+    const url = API_CONFIG.domain + `/naver/papago/${korean}`;
+    return this.http.get<any>(url);
+  }
+
   postWord(word: Word): Observable<Word> {
     const url = API_CONFIG.domain + `/words`;
     const httpOptions = {

@@ -14,7 +14,7 @@ export class AddWordComponent implements OnInit {
   @Input() english: string = '';
   @Input() description: string = '';
 
-  constructor(private wordService: WordService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -50,7 +50,6 @@ export class AddWordComponent implements OnInit {
       description: this.description
     };
     
-    console.log(word);
     this.onAddWord.emit(word);
 
     this.initModal();
