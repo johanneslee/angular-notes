@@ -10,7 +10,6 @@ import { Word } from '../../Word';
 export class WordsComponent implements OnInit {
   words: Word[] = [];
   initWords: boolean = false;
-  addKoreanEnabled: boolean = false;
   addWordEnabled: boolean = false;
 
   constructor(private wordService: WordService) { }
@@ -60,10 +59,6 @@ export class WordsComponent implements OnInit {
     this.wordService
       .postWord(word)
       .subscribe(() => this.getWords());
-  }
-
-  onToggleKorean(addKoreanEnabled: boolean): void {
-    this.addKoreanEnabled = addKoreanEnabled;
   }
 
   onToggleWord(addWordEnabled: boolean): void {

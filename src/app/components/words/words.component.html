@@ -7,16 +7,11 @@
     ></app-word>
     <div
       class="plus"
-      (click)="onToggleKorean(true)"
+      (click)="onToggleWord(true)"
     >+</div>
-    <app-add-korean
-      *ngIf="addKoreanEnabled"
-      (onAddKorean)="postTranslatedKorean($event)"
-      (onClose)="onToggleKorean(false)"
-    ></app-add-korean>
     <app-add-word
       *ngIf="addWordEnabled"
-      (onAddWord)="postWord($event)"
+      (onAddWord)="postTranslatedKorean($event)"
       (onClose)="onToggleWord(false)"
     ></app-add-word>
   </div>

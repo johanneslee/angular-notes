@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -9,10 +9,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './components/main/main.component';
 import { WordsComponent } from './components/words/words.component';
-import { AddWordComponent } from './components/add-word/add-word.component';
 import { WordComponent } from './components/word/word.component';
 import { HomeComponent } from './components/home/home.component';
-import { AddKoreanComponent } from './components/add-korean/add-korean.component';
+import { AddWordComponent } from './components/add-word/add-word.component';
 
 const appRoutes = [
   {path: '', component: HomeComponent},
@@ -28,13 +27,13 @@ const appRoutes = [
     HomeComponent,
     WordsComponent,
     WordComponent,
-    AddWordComponent,
-    AddKoreanComponent
+    AddWordComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

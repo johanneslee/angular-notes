@@ -1,6 +1,5 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
-import { WordService } from '../../services/word.service';
-import { Word } from '../../Word';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-word',
@@ -9,20 +8,20 @@ import { Word } from '../../Word';
 })
 export class AddWordComponent implements OnInit {
   @Output() onClose: EventEmitter<void> = new EventEmitter();
-  @Output() onAddWord: EventEmitter<Word> = new EventEmitter();
-  @Input() korean: string = '';
-  @Input() english: string = '';
-  @Input() description: string = '';
+  @Output() onAddWord: EventEmitter<string> = new EventEmitter();
 
-  constructor() { }
+  wordForm!: FormGroup;
 
-  ngOnInit(): void {
+  constructor() {
+    this.wordForm = new FormGroup({
+      'korean': new FormControl('', Validators.required)
+    })
   }
 
-  initModal() {
-    this.korean = '';
-    this.english = '';
-    this.description = '';
+  ngOnInit(): void { }
+
+  getWord() {
+    return this.wordForm.value.korean;
   }
 
   closeModal() {
@@ -30,29 +29,7 @@ export class AddWordComponent implements OnInit {
   }
 
   setWord() {
-    if(!this.korean) {
-      alert('Please enter a Korean!');
-      return;
-    }
-    if(!this.english) {
-      alert('Please enter a English!');
-      return;
-    }
-    if(!this.description) {
-      alert('Please enter a Description!');
-      return;
-    }
-
-    const word: Word = {
-      seq: 0,
-      korean: this.korean,
-      english: this.english,
-      description: this.description
-    };
-    
-    this.onAddWord.emit(word);
-
-    this.initModal();
+    this.onAddWord.emit(this.getWord());
     this.closeModal();
   }
 }

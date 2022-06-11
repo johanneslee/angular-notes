@@ -1,19 +1,16 @@
-
-import { Type } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { AddWordComponent } from './add-word.component';
 
 describe('AddWordComponent', () => {
   let component: AddWordComponent;
-  let httpClientMock: HttpTestingController;
   let fixture: ComponentFixture<AddWordComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ],
-      declarations: [ AddWordComponent ]
+      declarations: [ AddWordComponent ],
+      imports: [ ReactiveFormsModule ]
     })
     .compileComponents();
   });
@@ -21,11 +18,34 @@ describe('AddWordComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AddWordComponent);
     component = fixture.componentInstance;
-    httpClientMock = fixture.debugElement.injector.get<HttpTestingController>(HttpTestingController as Type<HttpTestingController>);
+    component.wordForm = new FormGroup({
+      korean: new FormControl('', Validators.required)
+    });
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('form valid check - invalid', () => {
+    const control = component.wordForm.get('korean');
+    control?.setValue(null);
+    fixture.detectChanges();
+    expect(control?.invalid).toBeTruthy();
+  });
+
+  it('form valid check - valid', () => {
+    const control = component.wordForm.get('korean');
+    control?.setValue('test');
+    fixture.detectChanges();
+    expect(control?.valid).toBeTruthy();
+  });
+
+  it('form valid check - valid', () => {
+    const control = component.wordForm.get('korean');
+    control?.setValue('test');
+    fixture.detectChanges();
+    expect(control?.valid).toBeTruthy();
   });
 });
