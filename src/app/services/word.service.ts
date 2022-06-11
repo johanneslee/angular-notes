@@ -20,8 +20,13 @@ export class WordService {
     return this.http.get<Word>(url);
   }
 
-  postKorean(korean: string): Observable<any> {
+  translateKorean(korean: string): Observable<any> {
     const url = API_CONFIG.domain + `/naver/papago/${korean}`;
+    return this.http.get<any>(url);
+  }
+
+  getDescription(english: string): Observable<any> {
+    const url = API_CONFIG.domain + `/oxford/entries/${english}`;
     return this.http.get<any>(url);
   }
 

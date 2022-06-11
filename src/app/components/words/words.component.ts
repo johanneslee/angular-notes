@@ -27,13 +27,39 @@ export class WordsComponent implements OnInit {
     });
   }
 
-  postKorean(korean: string): void {
-    this.wordService.postKorean(korean).subscribe((object) => object.english);
+  postTranslatedKorean(korean:string): void {
+    let word: Word = {
+      seq: 0,
+      korean: '',
+      english: '',
+      description: ''
+    };
+    word.korean = korean;
+    this.translateKorean(word);
+  }
+
+  translateKorean(word: Word): void {
+    this.wordService
+      .translateKorean(word.korean)
+      .subscribe((object) => {
+        word.english = object.english;
+        this.getDescription(word);
+      });
+  }
+
+  getDescription(word: Word): void {
+    this.wordService
+      .getDescription(word.english)
+      .subscribe((object) => {
+        word.description = object.description;
+        this.postWord(word);
+      });
   }
 
   postWord(word: Word): void {
-    this.wordService.postWord(word).subscribe();
-    this.getWords();
+    this.wordService
+      .postWord(word)
+      .subscribe(() => this.getWords());
   }
 
   onToggleKorean(addKoreanEnabled: boolean): void {
